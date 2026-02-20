@@ -49,12 +49,12 @@ jobs:
         run: |
           docker buildx build --platform ${{ matrix.platform }} \
             -t ghcr.io/brendon-hablutzel/contacts:backend-${{ env.PLATFORM_TAG }} \
-            -f backend/Dockerfile
+            -f backend/Dockerfile \
             --push backend/
 
       - name: Build and Push Frontend Docker Image
         run: |
           docker buildx build --platform ${{ matrix.platform }} \
             -t ghcr.io/brendon-hablutzel/contacts:frontend-${{ env.PLATFORM_TAG }} \
-            -f frontend/Dockerfile
+            -f frontend/Dockerfile \
             --push frontend/
