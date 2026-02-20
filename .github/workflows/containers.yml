@@ -12,7 +12,7 @@ jobs:
       packages: write
     strategy:
       matrix:
-        platform: [linux/arm64, linux/arm/v8]
+        platform: [linux/arm64, linux/arm64/v8]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
