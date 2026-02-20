@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json .
 
 RUN npm ci
-# Note: Source files (frontend/src) are bind mounted into the container
+COPY src/ /app/src/
 COPY vite.config.ts index.html public /app/
 
 ENTRYPOINT [ "/usr/local/bin/npm" ]

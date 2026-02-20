@@ -4,6 +4,6 @@ WORKDIR /app
 COPY package*.json .
 
 RUN npm ci
-# Note: Source files (backend/src) are bind mounted into the container
+COPY src/ /app/src/
 
-CMD ["--experimental-strip-types", "--watch", "/app/src/index.ts"]
+CMD ["--experimental-strip-types", "src/index.ts"]
