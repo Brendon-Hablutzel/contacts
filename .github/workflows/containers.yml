@@ -35,13 +35,6 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # linux/amd64,linux/arm64,linux/arm/v8
-
-      # - name: Build and Push Docker Images
-      #   run: |
-      #     docker buildx build --platform linux/arm64,linux/amd64 -t ghcr.io/brendon-hablutzel/contacts:latest . \
-      #     --push
-
       - name: Normalize Platform Name
         run: echo "PLATFORM_TAG=${{ matrix.platform }}" | sed 's|/|-|g' >> $GITHUB_ENV
 
