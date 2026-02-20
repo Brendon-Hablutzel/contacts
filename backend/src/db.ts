@@ -2,7 +2,7 @@ import * as sqlite from "node:sqlite";
 
 const db = new sqlite.DatabaseSync("/var/run/db/backend.db");
 
-interface Contact {
+export interface Contact {
   name: string;
   phoneNumber: string;
   address: string;

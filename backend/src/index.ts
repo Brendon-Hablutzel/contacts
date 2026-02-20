@@ -1,7 +1,7 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import "./db.js";
-import { list } from "./db.js";
+import { create, list, type Contact } from "./db.js";
 
 const app = new Hono().basePath("/api"); // Make all endpoints start with "/api"
 
@@ -11,6 +11,17 @@ app.get("/", (c) => {
 
 app.get("/contacts", (c) => {
   return c.json(list());
+});
+
+app.post("/contacts", async (c) => {
+  const body = (await c.req.json()) as Contact;
+  const createdId = create(body.name, body.phoneNumber, body.address);
+  return c.json(
+    {
+      id: createdId,
+    },
+    201,
+  );
 });
 
 serve(
